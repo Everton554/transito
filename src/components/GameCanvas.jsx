@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import React, {
   useEffect,
   useRef,
@@ -788,13 +790,6 @@ export default function GameCanvas({
   // LOOP DO JOGO
   // =====================================
 
-  // O loop usa funções que são recriadas
-  // durante o render. O ESLint do Vercel
-  // trata isso como erro de build.
-  // Neste caso, o loop precisa permanecer
-  // ativo enquanto level/paused mudam.
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
 
     const canvas =
