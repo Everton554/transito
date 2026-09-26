@@ -1,0 +1,476 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #111827;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  background:
+    radial-gradient(
+      circle at center,
+      #1f2937 0%,
+      #111827 70%
+    );
+}
+
+/* =====================================
+   TELAS
+===================================== */
+
+.screen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* =====================================
+   MENU PRINCIPAL
+===================================== */
+
+.menu-card {
+  width: min(650px, 95vw);
+  padding: 50px 45px;
+  text-align: center;
+  background: #1f2937;
+  border: 4px solid #facc15;
+  border-radius: 18px;
+  box-shadow:
+    0 0 0 6px #111827,
+    0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.menu-card h1 {
+  margin-bottom: 15px;
+  font-size: 56px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: #facc15;
+}
+
+.subtitle {
+  margin-bottom: 25px;
+  font-size: 21px;
+  line-height: 1.4;
+  color: #ffffff;
+}
+
+.description {
+  margin-bottom: 30px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #d1d5db;
+}
+
+button {
+  border: none;
+  padding: 14px 30px;
+  border-radius: 8px;
+  background: #facc15;
+  color: #111827;
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+button:hover {
+  background: #fde047;
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 20px rgba(250, 204, 21, 0.25);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.controls {
+  margin-top: 35px;
+  padding-top: 20px;
+  border-top: 1px solid #374151;
+  color: #d1d5db;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.controls strong {
+  color: #facc15;
+}
+
+/* =====================================
+   HISTÓRIA
+===================================== */
+
+.story-card {
+  width: min(750px, 95vw);
+  padding: 45px;
+  text-align: center;
+  background: #1f2937;
+  border: 3px solid #374151;
+  border-radius: 16px;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.story-label {
+  margin-bottom: 15px;
+  color: #facc15;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.story-card h1 {
+  margin-bottom: 25px;
+  font-size: 34px;
+  color: #ffffff;
+}
+
+.story-text {
+  margin-bottom: 30px;
+  color: #d1d5db;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.story-text strong {
+  color: #facc15;
+}
+
+/* =====================================
+   TELA DO JOGO
+===================================== */
+
+.game-screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #111827;
+}
+
+/* =====================================
+   CANVAS / CÂMERA
+===================================== */
+
+.canvas-wrapper {
+  position: absolute;
+  left: 0;
+  top: 76px;
+  width: 100%;
+  height: calc(100vh - 76px);
+  overflow: hidden;
+  background: #3f8f3f;
+}
+
+.canvas-wrapper canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+
+/* =====================================
+   HUD
+===================================== */
+
+.hud {
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 76px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+  padding: 12px 22px;
+
+  background: rgba(17, 24, 39, 0.95);
+  border-bottom: 3px solid #facc15;
+
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.hud-left,
+.hud-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  white-space: nowrap;
+}
+
+.hud strong {
+  color: #facc15;
+}
+
+.objective {
+  flex: 1;
+  text-align: center;
+  color: #e5e7eb;
+  font-weight: 700;
+}
+
+/* =====================================
+   MENSAGENS DE EVENTO
+===================================== */
+
+.event-message {
+  position: absolute;
+  z-index: 30;
+
+  left: 50%;
+  bottom: 35px;
+
+  transform: translateX(-50%);
+
+  width: min(600px, 90vw);
+
+  padding: 20px 25px;
+
+  text-align: center;
+
+  background: rgba(17, 24, 39, 0.96);
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.event-message h2 {
+  margin-bottom: 8px;
+  font-size: 22px;
+}
+
+.event-message p {
+  color: #d1d5db;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.event-message.success {
+  border: 3px solid #22c55e;
+}
+
+.event-message.success h2 {
+  color: #22c55e;
+}
+
+.event-message.failure {
+  border: 3px solid #ef4444;
+}
+
+.event-message.failure h2 {
+  color: #ef4444;
+}
+
+/* =====================================
+   PAUSA
+===================================== */
+
+.pause-overlay {
+  position: absolute;
+  z-index: 50;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.pause-card {
+  width: min(420px, 90vw);
+  padding: 35px;
+
+  text-align: center;
+
+  background: #1f2937;
+
+  border: 3px solid #facc15;
+  border-radius: 15px;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.pause-card h2 {
+  margin-bottom: 25px;
+  color: #facc15;
+  font-size: 30px;
+}
+
+.pause-card button {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+}
+
+/* =====================================
+   RESULTADOS
+===================================== */
+
+.results-card {
+  width: min(700px, 95vw);
+  padding: 45px;
+
+  text-align: center;
+
+  background: #1f2937;
+
+  border: 3px solid #facc15;
+  border-radius: 18px;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.results-card h1 {
+  margin-bottom: 15px;
+  font-size: 38px;
+  color: #facc15;
+}
+
+.results-message {
+  margin-bottom: 30px;
+  color: #d1d5db;
+  line-height: 1.6;
+}
+
+.results-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.results-stats div {
+  padding: 18px 10px;
+
+  background: #111827;
+
+  border: 1px solid #374151;
+  border-radius: 10px;
+}
+
+.results-stats span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #9ca3af;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.results-stats strong {
+  color: #facc15;
+  font-size: 25px;
+}
+
+.results-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.results-buttons button:last-child {
+  background: #374151;
+  color: #ffffff;
+}
+
+.results-buttons button:last-child:hover {
+  background: #4b5563;
+}
+
+/* =====================================
+   RESPONSIVIDADE
+===================================== */
+
+@media (max-width: 800px) {
+
+  .menu-card {
+    padding: 35px 25px;
+  }
+
+  .menu-card h1 {
+    font-size: 42px;
+  }
+
+  .hud {
+    flex-wrap: wrap;
+    min-height: 95px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .hud-left,
+  .hud-right {
+    gap: 10px;
+  }
+
+  .objective {
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  .story-card {
+    padding: 30px 22px;
+  }
+
+  .story-card h1 {
+    font-size: 27px;
+  }
+
+  .story-text {
+    font-size: 16px;
+  }
+
+  .results-card {
+    padding: 30px 20px;
+  }
+
+  .results-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .results-buttons {
+    flex-direction: column;
+  }
+
+  .canvas-wrapper {
+    top: 95px;
+    width: 100%;
+    height: calc(100vh - 95px);
+  }
+}
